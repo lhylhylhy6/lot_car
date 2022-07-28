@@ -51,10 +51,8 @@ rt_err_t car_start(void)
 {
     rt_err_t ret = RT_EOK;
     controller.car_status = CAR_RUN ;
-    rt_pin_write(ain1_pin, PIN_HIGH);
-    rt_pin_write(ain2_pin, PIN_LOW);
-    rt_pin_write(bin1_pin, PIN_HIGH);
-    rt_pin_write(bin2_pin, PIN_LOW);
+    rt_pwm_enable(pwm1, 0);
+    rt_pwm_enable(pwm2, 0);
 
     return ret;
 }
@@ -63,22 +61,28 @@ rt_err_t car_stop(void)
 {
     rt_err_t ret = RT_EOK;
     controller.car_status = CAR_STOP ;
-    rt_pin_write(ain1_pin, PIN_LOW);
-    rt_pin_write(ain2_pin, PIN_LOW);
-    rt_pin_write(bin1_pin, PIN_LOW);
-    rt_pin_write(bin2_pin, PIN_LOW);
+    rt_pwm_disable(pwm1, 0);
+    rt_pwm_disable(pwm2, 0);
     return ret;
 }
 
 rt_err_t car_left(void)
 {
     rt_err_t ret = RT_EOK;
-    rt_uint32_t ms = 1100;
-    my_pwm_set_pulse(pwm1, PWM_PERIOD * 50 / 100);
-    my_pwm_set_pulse(pwm2, PWM_PERIOD * 100 / 100);
+    my_pwm_set_pulse(pwm1, 350000);
+    my_pwm_set_pulse(pwm2, PWM_PERIOD);
+    rt_kprintf("left\r\n");
+    for(int i=0;i<1000;i++)
+    {
+        for(int j=0;j<1000;j++)
+                for(int k=0;k<5;k++)
+                {
+                    int hhhh = 0;
+                    hhhh++ ;
+                }
 
-    rt_thread_mdelay(ms);
-
+    }
+    rt_kprintf("exti left\r\n");
     my_pwm_set_pulse(pwm1, PWM_PERIOD * controller.left_pulse / 100);
     my_pwm_set_pulse(pwm2, PWM_PERIOD * controller.rignt_pulse / 100);
 
@@ -87,34 +91,66 @@ rt_err_t car_left(void)
 rt_err_t car_right(void)
 {
     rt_err_t ret = RT_EOK;
-    rt_uint32_t ms = 1100;
-    my_pwm_set_pulse(pwm1, PWM_PERIOD * 100 / 100);
-    my_pwm_set_pulse(pwm2, PWM_PERIOD * 50 / 100);
 
-    rt_thread_mdelay(ms);
+    my_pwm_set_pulse(pwm1, PWM_PERIOD );
+    my_pwm_set_pulse(pwm2, 350000);
+
+    for(int i=0;i<1000;i++)
+    {
+        for(int j=0;j<1000;j++)
+            for(int k=0;k<5;k++)
+            {
+                int hhhh = 0;
+                hhhh++ ;
+            }
+    }
 
     my_pwm_set_pulse(pwm1, PWM_PERIOD * controller.left_pulse / 100);
     my_pwm_set_pulse(pwm2, PWM_PERIOD * controller.rignt_pulse / 100);
 
     return ret;
 }
+extern rt_uint8_t a;
 rt_err_t car_turn(void)
 {
     rt_err_t ret = RT_EOK;
-    rt_uint32_t ms = 1450;
-
+    rt_enter_critical();
     rt_pin_write(ain1_pin, PIN_LOW);
     rt_pin_write(ain2_pin, PIN_HIGH);
     rt_pin_write(bin1_pin, PIN_HIGH);
     rt_pin_write(bin2_pin, PIN_LOW);
+    my_pwm_set_pulse(pwm1, 1000000);
+    my_pwm_set_pulse(pwm2, 1000000);
+    rt_pwm_enable(pwm1, 0);
+    rt_pwm_enable(pwm2, 0);
 
-    rt_thread_mdelay(ms);
+    for(int i=0;i<1000;i++)
+    {
+        for(int j=0;j<1000;j++)
+            for(int k=0;k<4;k++)
+        {
+            int hhhh = 0;
+            hhhh++ ;
+        }
+    }
 
     rt_pin_write(ain1_pin, PIN_HIGH);
     rt_pin_write(ain2_pin, PIN_LOW);
     rt_pin_write(bin1_pin, PIN_HIGH);
     rt_pin_write(bin2_pin, PIN_LOW);
+    a = 0;
 
+
+    for(int i=0;i<1000;i++)
+    {
+        for(int j=0;j<1000;j++)
+            for(int k=0;k<4;k++)
+        {
+            int hhhh = 0;
+            hhhh++ ;
+        }
+    }
+    rt_exit_critical();
     return ret;
 }
 
@@ -189,8 +225,8 @@ rt_err_t car_turn(void)
 #if(ENABLE_CAR_MSH)
 MSH_CMD_EXPORT(car_start,make car start);
 MSH_CMD_EXPORT(car_stop,make car stop);
-MSH_CMD_EXPORT(car_right,make car right);
-MSH_CMD_EXPORT(car_left,make car left);
+//MSH_CMD_EXPORT(car_right,make car right);
+//MSH_CMD_EXPORT(car_left,make car left);
 MSH_CMD_EXPORT(car_turn,make car turn);
 //MSH_CMD_EXPORT(car_ex_left,car_ex_left);
 //MSH_CMD_EXPORT(car_ex_right,make car left);

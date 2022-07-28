@@ -23,7 +23,7 @@ int my_pwm_init(void)
         ret = rt_pwm_set(pwm1, PWM1_CH, pwm1_period, pwm1_pulse);
         if(ret<0)
             rt_kprintf("ret1: %d\r\n",ret);
-        rt_pwm_enable(pwm1, PWM1_CH);
+        //rt_pwm_enable(pwm1, PWM1_CH);
     }
     ret = RT_EOK;
     if(pwm2)
@@ -31,7 +31,7 @@ int my_pwm_init(void)
         ret = rt_pwm_set(pwm2, PWM2_CH, pwm2_period, pwm2_pulse);
         if(ret<0)
             rt_kprintf("ret2: %d\r\n",ret);
-        rt_pwm_enable(pwm2, PWM2_CH);
+        //rt_pwm_enable(pwm2, PWM2_CH);
     }
     return ret;
 }

@@ -19,6 +19,8 @@
 #define LED3_PIN    BSP_IO_PORT_01_PIN_06
 #define USER_INPUT  "P105"
 
+extern rt_uint8_t path_num;
+extern int path[8][4];
 
 void hal_entry(void)
 {
@@ -32,17 +34,38 @@ void hal_entry(void)
         rt_thread_mdelay(500);
     }
 }
-
+ rt_uint8_t a=0;
 void irq_callback_test(void *args)
 {
-    rt_kprintf("\n IRQ00 triggered \n");
+    if(a==0)
+    {
+        car_stop();
+            int temp[4]={0};
+            for(int i=0;i<4;i++)
+            {
+                if(path[path_num][i]==1)
+                {
+                    path[path_num][i]=2;
+                }
+                else if(path[path_num][i]==2)
+                {
+                    path[path_num][i]=1;
+                }
+                temp[i] = path[path_num][i];
+            }
+            for(int i=0;i<4;i++)
+            {
+                path[path_num][i] = temp[3-i];
+            }
+    }
+    a=1;
 }
 
-void icu_sample(void)
+int icu_sample(void)
 {
     /* init */
     rt_uint32_t pin = rt_pin_get(USER_INPUT);
-    rt_kprintf("\n pin number : 0x%04X \n", pin);
+    //rt_kprintf("\n pin number : 0x%04X \n", pin);
     rt_err_t err = rt_pin_attach_irq(pin, PIN_IRQ_MODE_RISING, irq_callback_test, RT_NULL);
     if(RT_EOK != err)
     {
@@ -53,5 +76,6 @@ void icu_sample(void)
     {
         rt_kprintf("\n enable irq failed. \n");
     }
+    return err;
 }
-MSH_CMD_EXPORT(icu_sample, icu sample);
+INIT_APP_EXPORT(icu_sample);
