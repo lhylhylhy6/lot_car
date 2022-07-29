@@ -77,8 +77,8 @@ src/uart0_t.o: ../src/uart0_t.c \
  G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/drivers/serial_v2.h \
  G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/drivers/pin.h \
  G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/drivers/rt_drv_pwm.h \
- G\:\RT-ThreadStudio\workspace\PWWWWM\board/board.h ../src/pid.h \
- ../src/my_pwm.h ../src/controller.h
+ G\:\RT-ThreadStudio\workspace\PWWWWM\board/board.h ../src/controller.h \
+ ../src/my_pwm.h
 G\:\RT-ThreadStudio\workspace\PWWWWM\rtconfig_preinc.h:
 ../src/uart0_t.h:
 G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\include/rtthread.h:
@@ -159,6 +159,5 @@ G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/driver
 G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/drivers/pin.h:
 G\:\RT-ThreadStudio\workspace\PWWWWM\rt-thread\components\drivers\include/drivers/rt_drv_pwm.h:
 G\:\RT-ThreadStudio\workspace\PWWWWM\board/board.h:
-../src/pid.h:
-../src/my_pwm.h:
 ../src/controller.h:
+../src/my_pwm.h:

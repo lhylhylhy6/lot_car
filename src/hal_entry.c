@@ -21,6 +21,7 @@
 
 extern rt_uint8_t path_num;
 extern int path[8][4];
+extern int turn_flag;
 
 void hal_entry(void)
 {
@@ -37,9 +38,11 @@ void hal_entry(void)
  rt_uint8_t a=0;
 void irq_callback_test(void *args)
 {
+    turn_flag=0;
     if(a==0)
     {
         car_stop();
+        //turn_flag=0;
             int temp[4]={0};
             for(int i=0;i<4;i++)
             {

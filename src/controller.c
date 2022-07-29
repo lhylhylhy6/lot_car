@@ -5,6 +5,8 @@ rt_uint32_t ain1_pin,ain2_pin,bin1_pin,bin2_pin;
 extern struct rt_device_pwm * pwm1 ;
 extern struct rt_device_pwm * pwm2 ;
 
+extern rt_uint8_t path_num;
+
 struct Controller controller = {
       .car_status = CAR_STOP,
       .arrive_flag = 0,
@@ -47,10 +49,15 @@ int car_init(void)
 
 //INIT_APP_EXPORT(car_init);
 
-rt_err_t car_start(void)
+rt_err_t car_start(int argc,char **argv)
 {
     rt_err_t ret = RT_EOK;
     controller.car_status = CAR_RUN ;
+    if(argc==2)
+    {
+        path_num = atoi(argv[1]);
+        rt_kprintf("now path is %d\r\n",path_num);
+    }
     rt_pwm_enable(pwm1, 0);
     rt_pwm_enable(pwm2, 0);
 
@@ -115,19 +122,20 @@ rt_err_t car_turn(void)
 {
     rt_err_t ret = RT_EOK;
     rt_enter_critical();
+
     rt_pin_write(ain1_pin, PIN_LOW);
     rt_pin_write(ain2_pin, PIN_HIGH);
     rt_pin_write(bin1_pin, PIN_HIGH);
     rt_pin_write(bin2_pin, PIN_LOW);
-    my_pwm_set_pulse(pwm1, 1000000);
-    my_pwm_set_pulse(pwm2, 1000000);
+    my_pwm_set_pulse(pwm1, 900000);
+    my_pwm_set_pulse(pwm2, 900000);
     rt_pwm_enable(pwm1, 0);
     rt_pwm_enable(pwm2, 0);
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<1000;j++)
-            for(int k=0;k<4;k++)
+        for(int j=0;j<980;j++)
+            for(int k=0;k<5;k++)
         {
             int hhhh = 0;
             hhhh++ ;
@@ -143,7 +151,7 @@ rt_err_t car_turn(void)
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<1000;j++)
+        for(int j=0;j<1100;j++)
             for(int k=0;k<4;k++)
         {
             int hhhh = 0;

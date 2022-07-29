@@ -20,10 +20,10 @@ rt_mutex_t number_protect = RT_NULL;
 rt_uint8_t path_num=5;
 
 int path[8][4]={
-        {1,0,0,0},
-        {2,0,0,0},
-        {0,1,0,0},
-        {0,2,0,0},
+        {1,0,1,0},
+        {2,0,2,0},
+        {0,1,0,1},
+        {0,2,0,2},
         {0,0,1,1},
         {0,0,1,2},
         {0,0,2,1},
@@ -40,12 +40,13 @@ rt_err_t uart0_cbk(rt_device_t dev,rt_size_t size)
         rt_kprintf("error inter 1 \r\n");
     return ret;
 }
+int turn_flag=0;
 void uart0_read_thread_entry(void *parameter)
 {
     char ch=0;
     static rt_uint32_t temp_number=0;
     static rt_uint8_t flag=0;
-    static int turn_flag=0;
+
     while(1)
     {
         while(rt_device_read(uart0_dev, -1, &ch, 1)!=1)
@@ -71,14 +72,16 @@ void uart0_read_thread_entry(void *parameter)
             flag=1;
             rt_kprintf("is turn\r\n");
             rt_kprintf("%d\r\n",path[path_num][turn_flag]);
+
             switch(path[path_num][turn_flag])
             {
                 case 0:break;
-                case 1:car_left();break;
-                case 2:car_right();break;
+                case 1:rt_enter_critical();car_left();rt_exit_critical();break;
+                case 2:rt_enter_critical();car_right();rt_exit_critical();break;
             }
             turn_flag++;
-            turn_flag%=4;
+            if(turn_flag >=4)
+                turn_flag = 0;
         }
         else if(ch>='0'&&ch<='9')
         {
@@ -100,7 +103,7 @@ int uart0_init(void)
 
     number_protect = rt_mutex_create("number_protect", RT_IPC_FLAG_FIFO);
 
-    uart0_read_thread = rt_thread_create("uart0_read", uart0_read_thread_entry, 0, 512, 5, 300);
+    uart0_read_thread = rt_thread_create("uart0_read", uart0_read_thread_entry, 0, 1024, 5, 300);
     if(uart0_read_thread)
     {
         rt_thread_startup(uart0_read_thread);

@@ -1,7 +1,7 @@
 #include "pid.h"
 #include "uart0_t.h"
 
-#define speed  500000
+#define speed  800000
 float middle = 162.0;
 
 extern rt_uint32_t number;

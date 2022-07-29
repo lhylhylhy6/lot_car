@@ -37,7 +37,7 @@ struct Controller{
     rt_uint8_t left_pulse;       //左占空比
     rt_uint8_t rignt_pulse;      //右占空比
 
-    rt_err_t (*start)(void);
+    rt_err_t (*start)(int argc,char **argv);
     rt_err_t (*stop)(void);
     rt_err_t (*left)(void);
     rt_err_t (*right)(void);
@@ -46,7 +46,7 @@ struct Controller{
 };
 
 int car_init(void);
-rt_err_t car_start(void);
+rt_err_t car_start(int argc,char **argv);
 rt_err_t car_stop(void);
 rt_err_t car_left(void);
 rt_err_t car_right(void);
