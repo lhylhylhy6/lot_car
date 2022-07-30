@@ -20,8 +20,8 @@ rt_mutex_t number_protect = RT_NULL;
 rt_uint8_t path_num=5;
 
 int path[8][4]={
-        {1,0,1,0},
-        {2,0,2,0},
+        {1,1,1,1},
+        {2,2,2,2},
         {0,1,0,1},
         {0,2,0,2},
         {0,0,1,1},

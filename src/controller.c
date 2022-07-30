@@ -127,14 +127,14 @@ rt_err_t car_turn(void)
     rt_pin_write(ain2_pin, PIN_HIGH);
     rt_pin_write(bin1_pin, PIN_HIGH);
     rt_pin_write(bin2_pin, PIN_LOW);
-    my_pwm_set_pulse(pwm1, 900000);
-    my_pwm_set_pulse(pwm2, 900000);
+    my_pwm_set_pulse(pwm1, 800000);
+    my_pwm_set_pulse(pwm2, 800000);
     rt_pwm_enable(pwm1, 0);
     rt_pwm_enable(pwm2, 0);
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<980;j++)
+        for(int j=0;j<1105;j++)
             for(int k=0;k<5;k++)
         {
             int hhhh = 0;
@@ -151,7 +151,7 @@ rt_err_t car_turn(void)
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<1100;j++)
+        for(int j=0;j<1230;j++)
             for(int k=0;k<4;k++)
         {
             int hhhh = 0;
