@@ -18,8 +18,10 @@ RM := rm -rf
 -include rt-thread/components/libc/compilers/common/subdir.mk
 -include rt-thread/components/finsh/subdir.mk
 -include rt-thread/components/drivers/serial/subdir.mk
+-include rt-thread/components/drivers/sensors/subdir.mk
 -include rt-thread/components/drivers/misc/subdir.mk
 -include rt-thread/components/drivers/ipc/subdir.mk
+-include rt-thread/components/drivers/i2c/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
@@ -28,6 +30,8 @@ RM := rm -rf
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
 -include packages/rt_vsnprintf_full-latest/subdir.mk
+-include packages/dhtxx-latest/src/subdir.mk
+-include packages/dhtxx-latest/examples/subdir.mk
 -include libraries/HAL_Drivers/subdir.mk
 -include board/ports/subdir.mk
 -include subdir.mk

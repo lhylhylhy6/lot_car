@@ -1,7 +1,12 @@
 #include "controller.h"
 #include "stdlib.h"
 #include "pid.h"
+//#include "measure.h"
 rt_uint32_t ain1_pin,ain2_pin,bin1_pin,bin2_pin;
+
+
+
+
 extern struct rt_device_pwm * pwm1 ;
 extern struct rt_device_pwm * pwm2 ;
 
@@ -38,6 +43,8 @@ int car_init(void)
     rt_pin_write(ain2_pin, PIN_LOW);
     rt_pin_write(bin1_pin, PIN_LOW);
     rt_pin_write(bin2_pin, PIN_LOW);
+
+
 
     ret = my_pwm_init();
     pid_init();
@@ -146,7 +153,7 @@ rt_err_t car_turn(void)
     rt_pin_write(ain2_pin, PIN_LOW);
     rt_pin_write(bin1_pin, PIN_HIGH);
     rt_pin_write(bin2_pin, PIN_LOW);
-    a = 0;
+
 
 
     for(int i=0;i<1000;i++)
@@ -158,6 +165,7 @@ rt_err_t car_turn(void)
             hhhh++ ;
         }
     }
+    a = 0;
     rt_exit_critical();
     return ret;
 }

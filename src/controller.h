@@ -20,6 +20,8 @@
 #define PATH_INF_MAX 10
 #define PWM_PERCENT_INIT   50
 
+#define UPLOAD_EVENT (1<<8)
+#define UPLOAD_EVENT_1 (1<<7)
 
 enum CAR_S{
   CAR_RUN,

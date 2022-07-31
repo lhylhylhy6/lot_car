@@ -15,7 +15,7 @@
 #define RT_HOOK_USING_FUNC_PTR
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
-#define IDLE_THREAD_STACK_SIZE 256
+#define IDLE_THREAD_STACK_SIZE 1024
 #define RT_USING_TIMER_SOFT
 #define RT_TIMER_THREAD_PRIO 4
 #define RT_TIMER_THREAD_STACK_SIZE 512
@@ -84,6 +84,8 @@
 #define RT_SERIAL_USING_DMA
 #define RT_USING_PIN
 #define RT_USING_PWM
+#define RT_USING_SENSOR
+#define RT_USING_SENSOR_CMD
 
 /* Using USB */
 
@@ -207,10 +209,17 @@
 
 /* peripheral libraries and drivers */
 
+#define PKG_USING_SENSORS_DRIVERS
+#define PKG_USING_DHTXX
+#define PKG_USING_DHTXX_TYPE_DHT11
+#define PKG_USING_DHTXX_SAMPLE
+#define PKG_USING_DHTXX_SAMPLE_PIN 0
+#define PKG_USING_DHTXX_LATEST_VERSION
+#define PKG_DHTXX_VER_NUM 0x99999
 
-/* kendryte-sdk: Kendryte SDK */
+/* Kendryte SDK */
 
-/* end of kendryte-sdk: Kendryte SDK */
+/* end of Kendryte SDK */
 /* end of peripheral libraries and drivers */
 
 /* AI packages */

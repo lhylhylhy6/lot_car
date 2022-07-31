@@ -530,6 +530,8 @@
       <configSetting altId="p100.gpio_mode.gpio_mode_peripheral" configurationId="p100.gpio_mode"/>
       <configSetting altId="p101.sci0.txd" configurationId="p101"/>
       <configSetting altId="p101.gpio_mode.gpio_mode_peripheral" configurationId="p101.gpio_mode"/>
+      <configSetting altId="p102.input" configurationId="p102"/>
+      <configSetting altId="p102.gpio_mode.gpio_mode_in" configurationId="p102.gpio_mode"/>
       <configSetting altId="p105.irq0.irq00" configurationId="p105"/>
       <configSetting altId="p105.gpio_irq.gpio_irq_enabled" configurationId="p105.gpio_irq"/>
       <configSetting altId="p105.gpio_mode.gpio_mode_irq" configurationId="p105.gpio_mode"/>
@@ -549,12 +551,16 @@
       <configSetting altId="p204.gpio_mode.gpio_mode_peripheral" configurationId="p204.gpio_mode"/>
       <configSetting altId="p205.spi0.ssl0" configurationId="p205"/>
       <configSetting altId="p205.gpio_mode.gpio_mode_peripheral" configurationId="p205.gpio_mode"/>
+      <configSetting altId="p206.input" configurationId="p206"/>
+      <configSetting altId="p206.gpio_mode.gpio_mode_in" configurationId="p206.gpio_mode"/>
       <configSetting altId="p212.cgc0.extal" configurationId="p212"/>
       <configSetting altId="p212.gpio_mode.gpio_mode_peripheral" configurationId="p212.gpio_mode"/>
       <configSetting altId="p213.cgc0.xtal" configurationId="p213"/>
       <configSetting altId="p213.gpio_mode.gpio_mode_peripheral" configurationId="p213.gpio_mode"/>
       <configSetting altId="p300.debug0.tck" configurationId="p300"/>
       <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
+      <configSetting altId="p301.input" configurationId="p301"/>
+      <configSetting altId="p301.gpio_mode.gpio_mode_in" configurationId="p301.gpio_mode"/>
       <configSetting altId="p304.gpt7.gtioca" configurationId="p304"/>
       <configSetting altId="p304.gpio_mode.gpio_mode_peripheral" configurationId="p304.gpio_mode"/>
       <configSetting altId="p403.output.low" configurationId="p403"/>

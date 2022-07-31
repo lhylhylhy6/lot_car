@@ -1,5 +1,6 @@
 #include "pid.h"
 #include "uart0_t.h"
+#include "rthw.h"
 
 #define speed  800000
 float middle = 162.0;
@@ -22,21 +23,24 @@ rt_thread_t pid_thread = RT_NULL;
 
 extern rt_mutex_t number_protect;
 
+
+
 void pid_compute(rt_uint32_t val);
 
 void pid_thread_entry(void *parameter)
 {
     while(1)
     {
-        rt_uint32_t num=0;
-        num=0;
+            rt_uint32_t num=0;
+            num=0;
 
-        rt_mutex_take(number_protect, RT_WAITING_FOREVER);
-        num = number;
-        rt_mutex_release(number_protect);
+            rt_mutex_take(number_protect, RT_WAITING_FOREVER);
+            num = number;
+            rt_mutex_release(number_protect);
 
-        pid_compute(num);
-        rt_thread_mdelay(30);
+            pid_compute(num);
+
+            rt_thread_mdelay(30);
     }
 }
 

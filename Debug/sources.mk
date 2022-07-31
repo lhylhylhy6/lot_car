@@ -21,6 +21,8 @@ C_DEPS :=
 SUBDIRS := \
 board/ports \
 libraries/HAL_Drivers \
+packages/dhtxx-latest/examples \
+packages/dhtxx-latest/src \
 packages/rt_vsnprintf_full-latest \
 ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
@@ -29,8 +31,10 @@ ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra_gen \
+rt-thread/components/drivers/i2c \
 rt-thread/components/drivers/ipc \
 rt-thread/components/drivers/misc \
+rt-thread/components/drivers/sensors \
 rt-thread/components/drivers/serial \
 rt-thread/components/finsh \
 rt-thread/components/libc/compilers/common \

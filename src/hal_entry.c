@@ -14,6 +14,8 @@
 #include <rtdevice.h>
 #include "controller.h"
 #include "uart0_t.h"
+#include "measure.h"
+
 
 
 #define LED3_PIN    BSP_IO_PORT_01_PIN_06
@@ -23,12 +25,16 @@ extern rt_uint8_t path_num;
 extern int path[8][4];
 extern int turn_flag;
 
+struct rt_completion measure_completion;
+
 void hal_entry(void)
 {
     rt_kprintf("\nHello RT-Thread!\n");
+    rt_completion_init(&measure_completion);
+    measure_init();
     uart0_init();
     car_init();
-//    car_start();
+
 
     while (1)
     {
@@ -42,7 +48,8 @@ void irq_callback_test(void *args)
     if(a==0)
     {
         car_stop();
-        //turn_flag=0;
+        rt_completion_done(&measure_completion);
+        rt_kprintf("upload event send\r\n");
             int temp[4]={0};
             for(int i=0;i<4;i++)
             {

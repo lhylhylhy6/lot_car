@@ -89,6 +89,7 @@ void uart0_read_thread_entry(void *parameter)
         }
         ch=0;
     }
+
 }
 
 int uart0_init(void)
