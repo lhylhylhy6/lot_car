@@ -1,5 +1,10 @@
 [
  {
+  "path": "/packages/iot/at_device", 
+  "ver": "latest", 
+  "name": "AT_DEVICE"
+ }, 
+ {
   "path": "/packages/system/enhanced-kservice/rt_vsnprintf_full", 
   "ver": "latest", 
   "name": "RT_VSNPRINTF_FULL"

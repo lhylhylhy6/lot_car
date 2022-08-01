@@ -12,6 +12,17 @@
 #include "r_external_irq_api.h"
 FSP_HEADER
 /** UART on SCI Instance. */
+            extern const uart_instance_t      g_uart1;
+
+            /** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
+            extern sci_uart_instance_ctrl_t     g_uart1_ctrl;
+            extern const uart_cfg_t g_uart1_cfg;
+            extern const sci_uart_extended_cfg_t g_uart1_cfg_extend;
+
+            #ifndef user_uart1_callback
+            void user_uart1_callback(uart_callback_args_t * p_args);
+            #endif
+/** UART on SCI Instance. */
             extern const uart_instance_t      g_uart0;
 
             /** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
