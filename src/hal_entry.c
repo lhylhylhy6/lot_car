@@ -15,6 +15,7 @@
 #include "controller.h"
 #include "uart0_t.h"
 #include "measure.h"
+#include "onenet.h"
 
 
 
@@ -31,6 +32,7 @@ void hal_entry(void)
 {
     rt_kprintf("\nHello RT-Thread!\n");
     rt_completion_init(&measure_completion);
+    onenet_mqtt_init();
     measure_init();
     uart0_init();
     car_init();

@@ -8,7 +8,7 @@ float middle = 162.0;
 extern rt_uint32_t number;
 
 rt_int32_t pwm_l,pwm_r;
-float kp = 750000;
+float kp = 800000;
 float ki = 0.0;
 float kd = 200;
 

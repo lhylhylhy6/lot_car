@@ -24,7 +24,12 @@ libraries/HAL_Drivers \
 packages/at_device-latest/class/esp8266 \
 packages/at_device-latest/samples \
 packages/at_device-latest/src \
+packages/cJSON-latest \
 packages/dhtxx-latest/src \
+packages/onenet-latest/samples \
+packages/onenet-latest/src \
+packages/pahomqtt-latest/MQTTClient-RT \
+packages/pahomqtt-latest/MQTTPacket/src \
 packages/rt_vsnprintf_full-latest \
 ra/fsp/src/bsp/cmsis/Device/RENESAS/Source \
 ra/fsp/src/bsp/mcu/all \
@@ -33,6 +38,8 @@ ra/fsp/src/r_icu \
 ra/fsp/src/r_ioport \
 ra/fsp/src/r_sci_uart \
 ra_gen \
+rt-thread/components/dfs/filesystems/devfs \
+rt-thread/components/dfs/src \
 rt-thread/components/drivers/ipc \
 rt-thread/components/drivers/misc \
 rt-thread/components/drivers/sensors \
@@ -40,9 +47,11 @@ rt-thread/components/drivers/serial \
 rt-thread/components/finsh \
 rt-thread/components/libc/compilers/common \
 rt-thread/components/libc/compilers/newlib \
+rt-thread/components/libc/posix/io/poll \
 rt-thread/components/net/at/at_socket \
 rt-thread/components/net/at/src \
 rt-thread/components/net/netdev/src \
+rt-thread/components/net/sal/dfs_net \
 rt-thread/components/net/sal/impl \
 rt-thread/components/net/sal/socket \
 rt-thread/components/net/sal/src \

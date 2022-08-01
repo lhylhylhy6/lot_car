@@ -55,7 +55,8 @@ int car_init(void)
 }
 
 //INIT_APP_EXPORT(car_init);
-
+extern int turn_flag;
+extern  rt_uint8_t a;
 rt_err_t car_start(int argc,char **argv)
 {
     rt_err_t ret = RT_EOK;
@@ -65,6 +66,8 @@ rt_err_t car_start(int argc,char **argv)
         path_num = atoi(argv[1]);
         rt_kprintf("now path is %d\r\n",path_num);
     }
+    turn_flag = 0;
+    a = 0;
     rt_pwm_enable(pwm1, 0);
     rt_pwm_enable(pwm2, 0);
 
@@ -125,9 +128,13 @@ rt_err_t car_right(void)
     return ret;
 }
 extern rt_uint8_t a;
-rt_err_t car_turn(void)
+rt_err_t car_turn(int argc,char **argv)
 {
     rt_err_t ret = RT_EOK;
+    rt_uint32_t times=0;
+    rt_uint32_t delay=0;
+    times = atoi(argv[1]);
+    delay = atoi(argv[2]);
     rt_enter_critical();
 
     rt_pin_write(ain1_pin, PIN_LOW);
@@ -141,8 +148,8 @@ rt_err_t car_turn(void)
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<1105;j++)
-            for(int k=0;k<5;k++)
+        for(int j=0;j<times;j++)
+            for(int k=0;k<6;k++)
         {
             int hhhh = 0;
             hhhh++ ;
@@ -158,7 +165,7 @@ rt_err_t car_turn(void)
 
     for(int i=0;i<1000;i++)
     {
-        for(int j=0;j<1230;j++)
+        for(int j=0;j<delay;j++)
             for(int k=0;k<4;k++)
         {
             int hhhh = 0;

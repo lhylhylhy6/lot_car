@@ -43,7 +43,7 @@ struct Controller{
     rt_err_t (*stop)(void);
     rt_err_t (*left)(void);
     rt_err_t (*right)(void);
-    rt_err_t (*turn)(void);
+    rt_err_t (*turn)(int argc,char **argv);
 
 };
 
@@ -52,7 +52,8 @@ rt_err_t car_start(int argc,char **argv);
 rt_err_t car_stop(void);
 rt_err_t car_left(void);
 rt_err_t car_right(void);
-rt_err_t car_turn(void);
+rt_err_t car_turn(int argc,char **argv);
+
 
 
 

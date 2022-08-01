@@ -17,9 +17,11 @@ RM := rm -rf
 -include rt-thread/components/net/sal/src/subdir.mk
 -include rt-thread/components/net/sal/socket/subdir.mk
 -include rt-thread/components/net/sal/impl/subdir.mk
+-include rt-thread/components/net/sal/dfs_net/subdir.mk
 -include rt-thread/components/net/netdev/src/subdir.mk
 -include rt-thread/components/net/at/src/subdir.mk
 -include rt-thread/components/net/at/at_socket/subdir.mk
+-include rt-thread/components/libc/posix/io/poll/subdir.mk
 -include rt-thread/components/libc/compilers/newlib/subdir.mk
 -include rt-thread/components/libc/compilers/common/subdir.mk
 -include rt-thread/components/finsh/subdir.mk
@@ -27,6 +29,8 @@ RM := rm -rf
 -include rt-thread/components/drivers/sensors/subdir.mk
 -include rt-thread/components/drivers/misc/subdir.mk
 -include rt-thread/components/drivers/ipc/subdir.mk
+-include rt-thread/components/dfs/src/subdir.mk
+-include rt-thread/components/dfs/filesystems/devfs/subdir.mk
 -include ra_gen/subdir.mk
 -include ra/fsp/src/r_sci_uart/subdir.mk
 -include ra/fsp/src/r_ioport/subdir.mk
@@ -35,7 +39,12 @@ RM := rm -rf
 -include ra/fsp/src/bsp/mcu/all/subdir.mk
 -include ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/subdir.mk
 -include packages/rt_vsnprintf_full-latest/subdir.mk
+-include packages/pahomqtt-latest/MQTTPacket/src/subdir.mk
+-include packages/pahomqtt-latest/MQTTClient-RT/subdir.mk
+-include packages/onenet-latest/src/subdir.mk
+-include packages/onenet-latest/samples/subdir.mk
 -include packages/dhtxx-latest/src/subdir.mk
+-include packages/cJSON-latest/subdir.mk
 -include packages/at_device-latest/src/subdir.mk
 -include packages/at_device-latest/samples/subdir.mk
 -include packages/at_device-latest/class/esp8266/subdir.mk
